@@ -1,0 +1,7 @@
+https://youtu.be/4onUKyIEZK0
+
+En este archivo se encuentra:
+
+1.Una carpeta y un .rar con el proyecto en visual studio.net
+2.el ejecutable
+3.el link de youtube

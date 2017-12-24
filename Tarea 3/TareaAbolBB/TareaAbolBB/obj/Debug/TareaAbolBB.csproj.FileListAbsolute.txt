@@ -1,0 +1,9 @@
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\bin\Debug\TareaAbolBB.exe.config
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\bin\Debug\TareaAbolBB.exe
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\bin\Debug\TareaAbolBB.pdb
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\obj\Debug\TareaAbolBB.csprojResolveAssemblyReference.cache
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\obj\Debug\TareaAbolBB.Form1.resources
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\obj\Debug\TareaAbolBB.Properties.Resources.resources
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\obj\Debug\TareaAbolBB.csproj.GenerateResource.Cache
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\obj\Debug\TareaAbolBB.exe
+c:\users\erick\documents\visual studio 2015\Projects\TareaAbolBB\TareaAbolBB\obj\Debug\TareaAbolBB.pdb
