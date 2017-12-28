@@ -162,6 +162,9 @@ namespace ClienteNW.ServiceReference1 {
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteNW.ServiceReference1.NodoLista cabezaField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -169,6 +172,140 @@ namespace ClienteNW.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteNW.ServiceReference1.NodoLista cabeza {
+            get {
+                return this.cabezaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.cabezaField, value) != true)) {
+                    this.cabezaField = value;
+                    this.RaisePropertyChanged("cabeza");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="NodoLista", Namespace="http://tempuri.org/")]
+    [System.SerializableAttribute()]
+    public partial class NodoLista : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteNW.ServiceReference1.NodoLista anteriorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private ClienteNW.ServiceReference1.NodoLista siguienteField;
+        
+        private int desplegadosField;
+        
+        private int sobrevivientesField;
+        
+        private int destruidasField;
+        
+        private int ganoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteNW.ServiceReference1.NodoLista anterior {
+            get {
+                return this.anteriorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.anteriorField, value) != true)) {
+                    this.anteriorField = value;
+                    this.RaisePropertyChanged("anterior");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false)]
+        public ClienteNW.ServiceReference1.NodoLista siguiente {
+            get {
+                return this.siguienteField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.siguienteField, value) != true)) {
+                    this.siguienteField = value;
+                    this.RaisePropertyChanged("siguiente");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=2)]
+        public int desplegados {
+            get {
+                return this.desplegadosField;
+            }
+            set {
+                if ((this.desplegadosField.Equals(value) != true)) {
+                    this.desplegadosField = value;
+                    this.RaisePropertyChanged("desplegados");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=3)]
+        public int sobrevivientes {
+            get {
+                return this.sobrevivientesField;
+            }
+            set {
+                if ((this.sobrevivientesField.Equals(value) != true)) {
+                    this.sobrevivientesField = value;
+                    this.RaisePropertyChanged("sobrevivientes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=4)]
+        public int destruidas {
+            get {
+                return this.destruidasField;
+            }
+            set {
+                if ((this.destruidasField.Equals(value) != true)) {
+                    this.destruidasField = value;
+                    this.RaisePropertyChanged("destruidas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute(IsRequired=true, Order=5)]
+        public int gano {
+            get {
+                return this.ganoField;
+            }
+            set {
+                if ((this.ganoField.Equals(value) != true)) {
+                    this.ganoField = value;
+                    this.RaisePropertyChanged("gano");
+                }
             }
         }
         
@@ -191,6 +328,20 @@ namespace ClienteNW.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/iniciarEstructuras", ReplyAction="*")]
         System.Threading.Tasks.Task iniciarEstructurasAsync();
+        
+        // CODEGEN: Generating message contract since element name graficarABBResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarABB", ReplyAction="*")]
+        ClienteNW.ServiceReference1.graficarABBResponse graficarABB(ClienteNW.ServiceReference1.graficarABBRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarABB", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteNW.ServiceReference1.graficarABBResponse> graficarABBAsync(ClienteNW.ServiceReference1.graficarABBRequest request);
+        
+        // CODEGEN: Generating message contract since element name graficarABBEspejoResult from namespace http://tempuri.org/ is not marked nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarABBEspejo", ReplyAction="*")]
+        ClienteNW.ServiceReference1.graficarABBEspejoResponse graficarABBEspejo(ClienteNW.ServiceReference1.graficarABBEspejoRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/graficarABBEspejo", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClienteNW.ServiceReference1.graficarABBEspejoResponse> graficarABBEspejoAsync(ClienteNW.ServiceReference1.graficarABBEspejoRequest request);
         
         // CODEGEN: Generating message contract since element name nickname from namespace http://tempuri.org/ is not marked nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/logearUsuario", ReplyAction="*")]
@@ -247,6 +398,128 @@ namespace ClienteNW.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/insertarEnOrtogonal", ReplyAction="*")]
         System.Threading.Tasks.Task<ClienteNW.ServiceReference1.insertarEnOrtogonalResponse> insertarEnOrtogonalAsync(ClienteNW.ServiceReference1.insertarEnOrtogonalRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarABBRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarABB", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteNW.ServiceReference1.graficarABBRequestBody Body;
+        
+        public graficarABBRequest() {
+        }
+        
+        public graficarABBRequest(ClienteNW.ServiceReference1.graficarABBRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class graficarABBRequestBody {
+        
+        public graficarABBRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarABBResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarABBResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteNW.ServiceReference1.graficarABBResponseBody Body;
+        
+        public graficarABBResponse() {
+        }
+        
+        public graficarABBResponse(ClienteNW.ServiceReference1.graficarABBResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarABBResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public byte[] graficarABBResult;
+        
+        public graficarABBResponseBody() {
+        }
+        
+        public graficarABBResponseBody(byte[] graficarABBResult) {
+            this.graficarABBResult = graficarABBResult;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarABBEspejoRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarABBEspejo", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteNW.ServiceReference1.graficarABBEspejoRequestBody Body;
+        
+        public graficarABBEspejoRequest() {
+        }
+        
+        public graficarABBEspejoRequest(ClienteNW.ServiceReference1.graficarABBEspejoRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class graficarABBEspejoRequestBody {
+        
+        public graficarABBEspejoRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class graficarABBEspejoResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="graficarABBEspejoResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClienteNW.ServiceReference1.graficarABBEspejoResponseBody Body;
+        
+        public graficarABBEspejoResponse() {
+        }
+        
+        public graficarABBEspejoResponse(ClienteNW.ServiceReference1.graficarABBEspejoResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class graficarABBEspejoResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public byte[] graficarABBEspejoResult;
+        
+        public graficarABBEspejoResponseBody() {
+        }
+        
+        public graficarABBEspejoResponseBody(byte[] graficarABBEspejoResult) {
+            this.graficarABBEspejoResult = graficarABBEspejoResult;
+        }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -874,6 +1147,52 @@ namespace ClienteNW.ServiceReference1 {
         
         public System.Threading.Tasks.Task iniciarEstructurasAsync() {
             return base.Channel.iniciarEstructurasAsync();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteNW.ServiceReference1.graficarABBResponse ClienteNW.ServiceReference1.ServiceNavalWarsSoap.graficarABB(ClienteNW.ServiceReference1.graficarABBRequest request) {
+            return base.Channel.graficarABB(request);
+        }
+        
+        public byte[] graficarABB() {
+            ClienteNW.ServiceReference1.graficarABBRequest inValue = new ClienteNW.ServiceReference1.graficarABBRequest();
+            inValue.Body = new ClienteNW.ServiceReference1.graficarABBRequestBody();
+            ClienteNW.ServiceReference1.graficarABBResponse retVal = ((ClienteNW.ServiceReference1.ServiceNavalWarsSoap)(this)).graficarABB(inValue);
+            return retVal.Body.graficarABBResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteNW.ServiceReference1.graficarABBResponse> ClienteNW.ServiceReference1.ServiceNavalWarsSoap.graficarABBAsync(ClienteNW.ServiceReference1.graficarABBRequest request) {
+            return base.Channel.graficarABBAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteNW.ServiceReference1.graficarABBResponse> graficarABBAsync() {
+            ClienteNW.ServiceReference1.graficarABBRequest inValue = new ClienteNW.ServiceReference1.graficarABBRequest();
+            inValue.Body = new ClienteNW.ServiceReference1.graficarABBRequestBody();
+            return ((ClienteNW.ServiceReference1.ServiceNavalWarsSoap)(this)).graficarABBAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClienteNW.ServiceReference1.graficarABBEspejoResponse ClienteNW.ServiceReference1.ServiceNavalWarsSoap.graficarABBEspejo(ClienteNW.ServiceReference1.graficarABBEspejoRequest request) {
+            return base.Channel.graficarABBEspejo(request);
+        }
+        
+        public byte[] graficarABBEspejo() {
+            ClienteNW.ServiceReference1.graficarABBEspejoRequest inValue = new ClienteNW.ServiceReference1.graficarABBEspejoRequest();
+            inValue.Body = new ClienteNW.ServiceReference1.graficarABBEspejoRequestBody();
+            ClienteNW.ServiceReference1.graficarABBEspejoResponse retVal = ((ClienteNW.ServiceReference1.ServiceNavalWarsSoap)(this)).graficarABBEspejo(inValue);
+            return retVal.Body.graficarABBEspejoResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClienteNW.ServiceReference1.graficarABBEspejoResponse> ClienteNW.ServiceReference1.ServiceNavalWarsSoap.graficarABBEspejoAsync(ClienteNW.ServiceReference1.graficarABBEspejoRequest request) {
+            return base.Channel.graficarABBEspejoAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClienteNW.ServiceReference1.graficarABBEspejoResponse> graficarABBEspejoAsync() {
+            ClienteNW.ServiceReference1.graficarABBEspejoRequest inValue = new ClienteNW.ServiceReference1.graficarABBEspejoRequest();
+            inValue.Body = new ClienteNW.ServiceReference1.graficarABBEspejoRequestBody();
+            return ((ClienteNW.ServiceReference1.ServiceNavalWarsSoap)(this)).graficarABBEspejoAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
