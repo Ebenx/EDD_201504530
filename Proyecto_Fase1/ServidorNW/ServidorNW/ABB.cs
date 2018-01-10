@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -246,5 +247,170 @@ namespace ServidorNW
             }
         }
 
+        string contenido = "";
+        public Byte[] graficarABB()
+        {
+            contenido = "";
+            if (raiz != null)
+            {
+                contenido = "digraph ArbolBinario{\n node [ fontname = \"Verdana\" shape = record ];\n";
+                escribirNodo(raiz);
+                graficarRamas(raiz);
+                contenido = contenido + "}";
+                imprimir(contenido);
+                generarImagen();
+
+                Byte[] bImage = new Byte[0];
+                FileStream imagen = new FileStream(" C:\\Grafos\\abb.png",FileMode.OpenOrCreate,FileAccess.ReadWrite);
+                bImage = new Byte[imagen.Length];
+                BinaryReader reader = new BinaryReader(imagen);
+                bImage = reader.ReadBytes(Convert.ToInt32(imagen.Length));
+                imagen.Close();
+                contenido = "";
+                return bImage;
+                
+
+
+            }
+            return null;
+        }
+
+        public void generarImagen()
+        {
+            String comand = "\"C:/Program Files (x86)/Graphviz2.38/bin/dot.exe\" -Tpng C:\\Grafos\\grafoABB.dot -o C:\\Grafos\\abb.png";
+            var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c" + comand);
+            var proc = new System.Diagnostics.Process { StartInfo = procStartInfo };
+            proc.Start();
+            proc.WaitForExit();
+        }
+
+        public void imprimir(string contenido)
+        {
+            TextWriter t = new StreamWriter(@"C:\Grafos\grafoABB.dot");
+
+            t.WriteLine(contenido);
+            t.Close();
+        }
+        public void escribirNodo(NodoABB actual)
+        {
+            contenido = contenido + actual.nickname + "[label=\"<f0>|<f1>Nickname: " + actual.nickname + " \nPassword: " +actual.password +
+                " \nEmail: " + actual.email + " \nConectado: " + actual.conectado.ToString() +"|<f2>\"];\n";
+
+
+            //GRAFICANDO LISTA
+            if (actual.juegos!=null && actual.juegos.cabeza!= null)
+            {
+                NodoLista aux = actual.juegos.cabeza;
+                int i = 0;
+                escribirNodoJuego(aux, actual, i);
+                do
+                {
+                    escribirNodoJuego(aux.siguiente, actual, i);
+                    contenido = contenido + "J" + actual.nickname +i.ToString() +" -> " + "J" + actual.nickname + (i+1).ToString() + ";\n";
+                    aux = aux.siguiente;
+                    i++;
+                } while (aux.siguiente != null);
+                graficarListaAlrevez(aux,actual, i);
+                contenido = contenido + actual.nickname + ":f1 -> " + "J" + actual.nickname + "0;\n";
+                
+            }
+        }
+        public void graficarListaAlrevez(NodoLista ultimoJuego,NodoABB actual,int fin)
+        {
+            do
+            {
+                contenido = contenido + "J" + actual.nickname + fin.ToString() + " -> " + "J" + actual.nickname + (fin - 1).ToString() + ";\n";
+                ultimoJuego = ultimoJuego.anterior;
+                fin--;
+            } while (ultimoJuego.anterior != null);
+        }
+
+
+
+        public void escribirNodoJuego(NodoLista actual, NodoABB actualABB, int numero)
+        {
+            
+            contenido = contenido + "J" +actualABB.nickname+numero.ToString() + "[label=\"oponente: "+ "J" + actualABB.nickname + numero.ToString()+  
+                " \nDesplegados: " + actual.desplegados.ToString() + " \nSobrevivientes: " +
+                actual.sobrevivientes.ToString() + "\nDestruidas: " + actual.destruidas.ToString() + 
+                " \nGano: " + actual.gano.ToString() + "\"];\n";
+        }
+
+        public void graficarRamas(NodoABB actual)
+        {
+            if (actual!=null){
+                if (actual.izq != null)
+                {
+                    escribirNodo(actual.izq);
+                    contenido = contenido + actual.nickname + ":f0 -> " + actual.izq.nickname + ":f1;\n";
+                    graficarRamas(actual.izq);
+                }
+                if (actual.der != null)
+                {
+                    escribirNodo(actual.der);
+                    contenido = contenido + actual.nickname + ":f2 -> " + actual.der.nickname + ":f1;\n";
+                    graficarRamas(actual.der);
+                }
+
+            }
+        }
+        public void imprimir2(string contenido)
+        {
+            TextWriter t = new StreamWriter(@"C:\Grafos\grafoABB2.dot");
+
+            t.WriteLine(contenido);
+            t.Close();
+        }
+
+        public void generarImagen2()
+        {
+            String comand = "\"C:/Program Files (x86)/Graphviz2.38/bin/dot.exe\" -Tpng C:\\Grafos\\grafoABB2.dot -o C:\\Grafos\\abb2.png";
+            var procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd.exe", "/c" + comand);
+            var proc = new System.Diagnostics.Process { StartInfo = procStartInfo };
+            proc.Start();
+            proc.WaitForExit();
+        }
+
+        public Byte[] graficarABBEspejo()
+        {
+            contenido = "";
+            if (raiz != null)
+            {
+                ABB arbolEspejo = new ABB();
+                arbolEspejo.raiz =  crearArbbEspejo(raiz);
+
+                contenido = "digraph ArbolBinario{\n node [ fontname = \"Verdana\" shape = record ];\n";
+                escribirNodo(arbolEspejo.raiz);
+                graficarRamas(arbolEspejo.raiz);
+                contenido = contenido + "}";
+                imprimir2(contenido);
+                generarImagen2();
+
+                Byte[] bImage = new Byte[0];
+                FileStream imagen = new FileStream(" C:\\Grafos\\abb2.png", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                bImage = new Byte[imagen.Length];
+                BinaryReader reader = new BinaryReader(imagen);
+                bImage = reader.ReadBytes(Convert.ToInt32(imagen.Length));
+                imagen.Close();
+                contenido = "";
+                return bImage;
+
+
+
+            }
+            return null;
+        }
+
+        public NodoABB crearArbbEspejo(NodoABB actual)
+        {
+            if (actual != null)
+            {
+                NodoABB nuevo = new NodoABB(actual.nickname, actual.password, actual.email, actual.conectado);
+                actual.izq= crearArbbEspejo(actual.der);
+                actual.der = crearArbbEspejo(actual.izq);
+                return nuevo;
+            }
+            return null;
+        }
     }
 }

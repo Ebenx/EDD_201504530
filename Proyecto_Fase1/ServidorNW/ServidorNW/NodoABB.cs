@@ -27,7 +27,7 @@ namespace ServidorNW
             this.conectado = conectado;
             this.izq = null;
             this.der = null;
-            this.juegos = null;
+            this.juegos = new ListaJuegos();
         }
 
        

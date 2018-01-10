@@ -14,6 +14,11 @@ namespace ServidorNW
         public int sobrevivientes;
         public int destruidas;
         public int gano;
+
+        NodoLista()
+        {
+
+        }
         public NodoLista(string oponente,int desplegados, int sobrevivientes, int destruidas, int gano)
         {
             this.oponente = oponente;

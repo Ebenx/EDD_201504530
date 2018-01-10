@@ -1,0 +1,757 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="holametodo">
+        <s:complexType />
+      </s:element>
+      <s:element name="holametodoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="rss">
+        <s:complexType />
+      </s:element>
+      <s:element name="rssResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rssResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="iniciarEstructuras">
+        <s:complexType />
+      </s:element>
+      <s:element name="iniciarEstructurasResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="graficarABB">
+        <s:complexType />
+      </s:element>
+      <s:element name="graficarABBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="graficarABBResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="graficarABBEspejo">
+        <s:complexType />
+      </s:element>
+      <s:element name="graficarABBEspejoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="graficarABBEspejoResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logearUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="logearUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="logearUsuarioResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarUsuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="eliminarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="eliminarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="eliminarUsuarioResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="buscarUsuarioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="buscarUsuarioResult" type="tns:NodoABB" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NodoABB">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="izq" type="tns:NodoABB" />
+          <s:element minOccurs="0" maxOccurs="1" name="der" type="tns:NodoABB" />
+          <s:element minOccurs="0" maxOccurs="1" name="juegos" type="tns:ListaJuegos" />
+          <s:element minOccurs="0" maxOccurs="1" name="avl" type="tns:Avl" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ListaJuegos">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="cabeza" type="tns:NodoLista" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NodoLista">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="anterior" type="tns:NodoLista" />
+          <s:element minOccurs="0" maxOccurs="1" name="siguiente" type="tns:NodoLista" />
+          <s:element minOccurs="0" maxOccurs="1" name="oponente" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="desplegados" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="sobrevivientes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="destruidas" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="gano" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Avl">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="raiz" type="tns:NodoAvl" />
+          <s:element minOccurs="1" maxOccurs="1" name="h" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="NodoAvl">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="usuario" type="tns:NodoABB" />
+          <s:element minOccurs="0" maxOccurs="1" name="izq" type="tns:NodoAvl" />
+          <s:element minOccurs="0" maxOccurs="1" name="der" type="tns:NodoAvl" />
+          <s:element minOccurs="1" maxOccurs="1" name="fe" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ModificarUsuario">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nicknameActual" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="nicknameNuevo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ModificarUsuarioResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="enOrden">
+        <s:complexType />
+      </s:element>
+      <s:element name="enOrdenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="enOrdenResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarHistorialJuego">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="oponente" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="desplegados" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sobrevivientes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="destruidas" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="gano" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarHistorialJuegoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarEnOrtogonal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="nivel" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="unidad" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="movimiento" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="alcance" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dano" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="vida" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="columna" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarEnOrtogonalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertarEnOrtogonalResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="devoverNodoHash">
+        <s:complexType />
+      </s:element>
+      <s:element name="devoverNodoHashResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="devoverNodoHashResult" type="tns:NodoHash" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="NodoHash">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="nickname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="conectado" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="clave" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="delverHola">
+        <s:complexType />
+      </s:element>
+      <s:element name="delverHolaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="delverHolaResult" type="tns:hola" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="hola">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="stga" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insertarContactoExistente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contacto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarContactoExistenteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="insertarContactoNuevo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="usuario" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contacto" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarContactoNuevoResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="holametodoSoapIn">
+    <wsdl:part name="parameters" element="tns:holametodo" />
+  </wsdl:message>
+  <wsdl:message name="holametodoSoapOut">
+    <wsdl:part name="parameters" element="tns:holametodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="rssSoapIn">
+    <wsdl:part name="parameters" element="tns:rss" />
+  </wsdl:message>
+  <wsdl:message name="rssSoapOut">
+    <wsdl:part name="parameters" element="tns:rssResponse" />
+  </wsdl:message>
+  <wsdl:message name="iniciarEstructurasSoapIn">
+    <wsdl:part name="parameters" element="tns:iniciarEstructuras" />
+  </wsdl:message>
+  <wsdl:message name="iniciarEstructurasSoapOut">
+    <wsdl:part name="parameters" element="tns:iniciarEstructurasResponse" />
+  </wsdl:message>
+  <wsdl:message name="graficarABBSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarABB" />
+  </wsdl:message>
+  <wsdl:message name="graficarABBSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarABBResponse" />
+  </wsdl:message>
+  <wsdl:message name="graficarABBEspejoSoapIn">
+    <wsdl:part name="parameters" element="tns:graficarABBEspejo" />
+  </wsdl:message>
+  <wsdl:message name="graficarABBEspejoSoapOut">
+    <wsdl:part name="parameters" element="tns:graficarABBEspejoResponse" />
+  </wsdl:message>
+  <wsdl:message name="logearUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:logearUsuario" />
+  </wsdl:message>
+  <wsdl:message name="logearUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:logearUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="insertarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="eliminarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:eliminarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="eliminarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:eliminarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="buscarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:buscarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="buscarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:buscarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="ModificarUsuarioSoapIn">
+    <wsdl:part name="parameters" element="tns:ModificarUsuario" />
+  </wsdl:message>
+  <wsdl:message name="ModificarUsuarioSoapOut">
+    <wsdl:part name="parameters" element="tns:ModificarUsuarioResponse" />
+  </wsdl:message>
+  <wsdl:message name="enOrdenSoapIn">
+    <wsdl:part name="parameters" element="tns:enOrden" />
+  </wsdl:message>
+  <wsdl:message name="enOrdenSoapOut">
+    <wsdl:part name="parameters" element="tns:enOrdenResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarHistorialJuegoSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarHistorialJuego" />
+  </wsdl:message>
+  <wsdl:message name="insertarHistorialJuegoSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarHistorialJuegoResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarEnOrtogonalSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarEnOrtogonal" />
+  </wsdl:message>
+  <wsdl:message name="insertarEnOrtogonalSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarEnOrtogonalResponse" />
+  </wsdl:message>
+  <wsdl:message name="devoverNodoHashSoapIn">
+    <wsdl:part name="parameters" element="tns:devoverNodoHash" />
+  </wsdl:message>
+  <wsdl:message name="devoverNodoHashSoapOut">
+    <wsdl:part name="parameters" element="tns:devoverNodoHashResponse" />
+  </wsdl:message>
+  <wsdl:message name="delverHolaSoapIn">
+    <wsdl:part name="parameters" element="tns:delverHola" />
+  </wsdl:message>
+  <wsdl:message name="delverHolaSoapOut">
+    <wsdl:part name="parameters" element="tns:delverHolaResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarContactoExistenteSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarContactoExistente" />
+  </wsdl:message>
+  <wsdl:message name="insertarContactoExistenteSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarContactoExistenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarContactoNuevoSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarContactoNuevo" />
+  </wsdl:message>
+  <wsdl:message name="insertarContactoNuevoSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarContactoNuevoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceNavalWarsSoap">
+    <wsdl:operation name="holametodo">
+      <wsdl:input message="tns:holametodoSoapIn" />
+      <wsdl:output message="tns:holametodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="rss">
+      <wsdl:input message="tns:rssSoapIn" />
+      <wsdl:output message="tns:rssSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="iniciarEstructuras">
+      <wsdl:input message="tns:iniciarEstructurasSoapIn" />
+      <wsdl:output message="tns:iniciarEstructurasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarABB">
+      <wsdl:input message="tns:graficarABBSoapIn" />
+      <wsdl:output message="tns:graficarABBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="graficarABBEspejo">
+      <wsdl:input message="tns:graficarABBEspejoSoapIn" />
+      <wsdl:output message="tns:graficarABBEspejoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="logearUsuario">
+      <wsdl:input message="tns:logearUsuarioSoapIn" />
+      <wsdl:output message="tns:logearUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarUsuario">
+      <wsdl:input message="tns:insertarUsuarioSoapIn" />
+      <wsdl:output message="tns:insertarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="eliminarUsuario">
+      <wsdl:input message="tns:eliminarUsuarioSoapIn" />
+      <wsdl:output message="tns:eliminarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuario">
+      <wsdl:input message="tns:buscarUsuarioSoapIn" />
+      <wsdl:output message="tns:buscarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <wsdl:input message="tns:ModificarUsuarioSoapIn" />
+      <wsdl:output message="tns:ModificarUsuarioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="enOrden">
+      <wsdl:input message="tns:enOrdenSoapIn" />
+      <wsdl:output message="tns:enOrdenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarHistorialJuego">
+      <wsdl:input message="tns:insertarHistorialJuegoSoapIn" />
+      <wsdl:output message="tns:insertarHistorialJuegoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarEnOrtogonal">
+      <wsdl:input message="tns:insertarEnOrtogonalSoapIn" />
+      <wsdl:output message="tns:insertarEnOrtogonalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="devoverNodoHash">
+      <wsdl:input message="tns:devoverNodoHashSoapIn" />
+      <wsdl:output message="tns:devoverNodoHashSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="delverHola">
+      <wsdl:input message="tns:delverHolaSoapIn" />
+      <wsdl:output message="tns:delverHolaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarContactoExistente">
+      <wsdl:input message="tns:insertarContactoExistenteSoapIn" />
+      <wsdl:output message="tns:insertarContactoExistenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarContactoNuevo">
+      <wsdl:input message="tns:insertarContactoNuevoSoapIn" />
+      <wsdl:output message="tns:insertarContactoNuevoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceNavalWarsSoap" type="tns:ServiceNavalWarsSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="holametodo">
+      <soap:operation soapAction="http://tempuri.org/holametodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rss">
+      <soap:operation soapAction="http://tempuri.org/rss" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iniciarEstructuras">
+      <soap:operation soapAction="http://tempuri.org/iniciarEstructuras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarABB">
+      <soap:operation soapAction="http://tempuri.org/graficarABB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarABBEspejo">
+      <soap:operation soapAction="http://tempuri.org/graficarABBEspejo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logearUsuario">
+      <soap:operation soapAction="http://tempuri.org/logearUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarUsuario">
+      <soap:operation soapAction="http://tempuri.org/insertarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarUsuario">
+      <soap:operation soapAction="http://tempuri.org/eliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuario">
+      <soap:operation soapAction="http://tempuri.org/buscarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <soap:operation soapAction="http://tempuri.org/ModificarUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enOrden">
+      <soap:operation soapAction="http://tempuri.org/enOrden" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarHistorialJuego">
+      <soap:operation soapAction="http://tempuri.org/insertarHistorialJuego" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarEnOrtogonal">
+      <soap:operation soapAction="http://tempuri.org/insertarEnOrtogonal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="devoverNodoHash">
+      <soap:operation soapAction="http://tempuri.org/devoverNodoHash" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delverHola">
+      <soap:operation soapAction="http://tempuri.org/delverHola" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarContactoExistente">
+      <soap:operation soapAction="http://tempuri.org/insertarContactoExistente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarContactoNuevo">
+      <soap:operation soapAction="http://tempuri.org/insertarContactoNuevo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceNavalWarsSoap12" type="tns:ServiceNavalWarsSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="holametodo">
+      <soap12:operation soapAction="http://tempuri.org/holametodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="rss">
+      <soap12:operation soapAction="http://tempuri.org/rss" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="iniciarEstructuras">
+      <soap12:operation soapAction="http://tempuri.org/iniciarEstructuras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarABB">
+      <soap12:operation soapAction="http://tempuri.org/graficarABB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="graficarABBEspejo">
+      <soap12:operation soapAction="http://tempuri.org/graficarABBEspejo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="logearUsuario">
+      <soap12:operation soapAction="http://tempuri.org/logearUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/insertarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="eliminarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/eliminarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="buscarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/buscarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarUsuario">
+      <soap12:operation soapAction="http://tempuri.org/ModificarUsuario" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enOrden">
+      <soap12:operation soapAction="http://tempuri.org/enOrden" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarHistorialJuego">
+      <soap12:operation soapAction="http://tempuri.org/insertarHistorialJuego" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarEnOrtogonal">
+      <soap12:operation soapAction="http://tempuri.org/insertarEnOrtogonal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="devoverNodoHash">
+      <soap12:operation soapAction="http://tempuri.org/devoverNodoHash" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="delverHola">
+      <soap12:operation soapAction="http://tempuri.org/delverHola" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarContactoExistente">
+      <soap12:operation soapAction="http://tempuri.org/insertarContactoExistente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarContactoNuevo">
+      <soap12:operation soapAction="http://tempuri.org/insertarContactoNuevo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceNavalWars">
+    <wsdl:port name="ServiceNavalWarsSoap" binding="tns:ServiceNavalWarsSoap">
+      <soap:address location="http://localhost:15254/ServiceNavalWars.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceNavalWarsSoap12" binding="tns:ServiceNavalWarsSoap12">
+      <soap12:address location="http://localhost:15254/ServiceNavalWars.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

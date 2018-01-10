@@ -29,6 +29,18 @@ namespace ServidorNW
         }
 
         [WebMethod]
+        public Byte[] graficarABB()
+        {
+            return arbolBinario.graficarABB();
+        }
+
+        [WebMethod]
+        public Byte[] graficarABBEspejo()
+        {
+            return arbolBinario.graficarABBEspejo();
+        }
+
+        [WebMethod]
         public string logearUsuario(string nickname)
         {
             if (nickname.Equals("@dm1n"))
@@ -55,7 +67,7 @@ namespace ServidorNW
         public bool eliminarUsuario(string nickname)
         {
             //arbolBinario.eliminar(nickname);
-            arbolBinario.eliminarNodo(arbolBinario.raiz ,nickname);
+            arbolBinario.eliminarNodo(arbolBinario.buscar(nickname) ,nickname);
             return true;
         }
 
